@@ -1,11 +1,12 @@
-all: run
+all: run-all
 build:
 	mkdir build
 	javac -cp lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar -d build src/java/*.java
 run-tests: build
 	javac -cp lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar:build -d build test/java/*.java
 	java -cp .:lib/junit-4.12.jar:build:lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore EdgeConnectorTest
-run: clean run-tests
+run:
 	java -cp build RunEdgeConvert
+run-all: run-tests run
 clean: 
 	rm -rf build
