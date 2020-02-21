@@ -1,0 +1,19 @@
+/*
+Compile java
+Run tests
+Copy static resources
+Format test results
+Build a JAR
+Create a top-level task that does all these things
+*/
+apply plugin: 'java'
+repositories {
+mavenCentral()
+}
+dependencies {
+compile 'commons-codec:commons-codec:1.6'
+}
+task raven(type: JavaExec) {
+main = 'src.java.EdgeConnector.java'
+classpath = sourceSets.main.runtimeClasspath
+}
