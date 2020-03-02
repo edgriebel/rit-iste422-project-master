@@ -1,3 +1,9 @@
+/*
+	Ellie Parobek
+	App Develop Practices: e05Build
+	To be used at https://github.com/arp6333/rit-iste422-project
+*/
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
@@ -26,3 +32,4 @@ test {
         includeTestsMatching "*Test"
     }
 }
+
