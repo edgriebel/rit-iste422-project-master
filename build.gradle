@@ -5,9 +5,8 @@
 */
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'application'
-
+mainClassName = "RunEdgeConvert"
 repositories {
 	mavenCentral()
 }
@@ -17,19 +16,5 @@ dependencies {
 	compile 'org.hamcrest:hamcrest-core:1.3'
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.hamcrest:hamcrest-core:1.3'
-}
-
-application {
-	mainClassName = "RunEdgeConvert"
-}
-
-task raven(type: JavaExec) {
-	classpath = sourceSets.main.runtimeClasspath
-}
-
-test {
-    filter {
-        includeTestsMatching "*Test"
-    }
 }
 
