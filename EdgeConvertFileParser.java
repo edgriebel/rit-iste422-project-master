@@ -191,7 +191,7 @@ public class EdgeConvertFileParser {
       } // connectors for() loop
    } // resolveConnectors()
    
-   public void parseSaveFile() throws IOException { //this method is fucked
+   public void parseSaveFile() throws IOException { //this method is unclear and confusing in places
       StringTokenizer stTables, stNatFields, stRelFields, stNatRelFields, stField;
       EdgeTable tempTable;
       EdgeField tempField;
