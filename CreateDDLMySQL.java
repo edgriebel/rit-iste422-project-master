@@ -22,8 +22,12 @@ public class CreateDDLMySQL extends EdgeConvertCreateDDL {
    }
    
    public void createDDL() {
-      EdgeConvertGUI.setReadSuccess(true);
-      databaseName = generateDatabaseName();
+	      EdgeConvertGUI.setReadSuccess(true);
+	      databaseName = generateDatabaseName();
+	      createDDL(databaseName);
+   }
+   
+   public void createDDL(String databaseName) {
       sb.append("CREATE DATABASE " + databaseName + ";\r\n");
       sb.append("USE " + databaseName + ";\r\n");
       for (int boundCount = 0; boundCount <= maxBound; boundCount++) { //process tables in order from least dependent (least number of bound tables) to most dependent
