@@ -5,6 +5,8 @@ import javax.swing.event.*;
 import javax.swing.filechooser.FileFilter;
 import java.io.*;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.lang.reflect.*;
 
 public class EdgeConvertGUI {
@@ -961,15 +963,32 @@ public class EdgeConvertGUI {
    }
    
    private void getOutputClasses() {
-      File[] resultFiles;
+      File[] resultFiles = {};
       Class resultClass = null;
       Class[] paramTypes = {EdgeTable[].class, EdgeField[].class};
       Class[] paramTypesNull = {};
       Constructor conResultClass;
       Object[] args = {tables, fields};
       Object objOutput = null;
-
-      resultFiles = outputDir.listFiles();
+	
+      String classLocation = EdgeConvertGUI.class.getResource("EdgeConvertGUI.class").toString();
+      if (classLocation.startsWith("jar:")) {
+          String jarfilename = classLocation.replaceFirst("^.*:", "").replaceFirst("!.*$", "");
+          System.out.println("Jarfile: " + jarfilename);
+          try (JarFile jarfile = new JarFile(jarfilename)) {
+              ArrayList<File> filenames = new ArrayList<>();
+              for (JarEntry e : Collections.list(jarfile.entries())) {
+                  System.out.println("Entry: " + e.getName() + " Real name: " + e.getRealName());
+                  filenames.add(new File(e.getRealName()));
+              }
+              resultFiles = filenames.toArray(new File[0]);
+          } catch (IOException ioe) {
+              throw new RuntimeException(ioe);
+          }
+      } 
+      else {
+          resultFiles = outputDir.listFiles();
+      }
       alProductNames.clear();
       alSubclasses.clear();
       try {
