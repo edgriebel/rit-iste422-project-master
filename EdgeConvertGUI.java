@@ -978,7 +978,7 @@ public class EdgeConvertGUI {
           try (JarFile jarfile = new JarFile(jarfilename)) {
               ArrayList<File> filenames = new ArrayList<>();
               for (JarEntry e : Collections.list(jarfile.entries())) {
-                  filenames.add(new File(e.getRealName()));
+                  filenames.add(new File(e.getName()));
               }
               resultFiles = filenames.toArray(new File[0]);
           } catch (IOException ioe) {
