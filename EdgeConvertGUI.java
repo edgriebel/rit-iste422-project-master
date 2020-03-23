@@ -147,8 +147,8 @@ public class EdgeConvertGUI {
       jmiDTHelpAbout.addActionListener(menuListener);
       jmDTHelp.add(jmiDTHelpAbout);
       
-      jfcEdge = new JFileChooser();
-      jfcOutputDir = new JFileChooser();
+      jfcEdge = new JFileChooser(".");
+      jfcOutputDir = new JFileChooser("..");
 	   effEdge = new ExampleFileFilter("edg", "Edge Diagrammer Files");
    	effSave = new ExampleFileFilter("sav", "Edge Convert Save Files");
       jfcOutputDir.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
